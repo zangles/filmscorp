@@ -19,15 +19,21 @@ class fakerSeed extends Seeder
 
         for ( $j = 0; $j < $productsCant; $j++) {
             $category = factory(Category::class)->create();
-            for ( $i = 0; $i < $propertyCant; $i++) {
-                $property = factory(CategoryProperty::class)->create([
-                    'category_id' => $category->id
-                ]);
-            }
 
             $product = factory(Product::class)->create([
                 'category_id' => $category->id
             ]);
+
+            for ( $i = 0; $i < $propertyCant; $i++) {
+                $property = factory(CategoryProperty::class)->create([
+                    'category_id' => $category->id
+                ]);
+
+                $product->property()->attach($property->id, [
+                    'value' => rand(1,5000)
+                ]);
+            }
+
         }
     }
 }

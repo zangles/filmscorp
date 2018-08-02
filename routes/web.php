@@ -15,10 +15,16 @@ Route::get('/', function () {
     return redirect('home');
 });
 
+Route::get('/azs', function () {
+    $product = \App\Product::find(1);
+    dd($product->property[0]->pivot->value);
+});
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('products', 'ProductController');
+    Route::resource('categories', 'CategoryController');
 });
 

@@ -19,6 +19,14 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('category_id');
             $table->double('price');
             $table->timestamps();
+
+
+        });
+
+        Schema::table('products', function (Blueprint $table) {
+            $table->foreign('category_id')
+                ->references('id')->on('categories')
+                ->onDelete('cascade');
         });
     }
 

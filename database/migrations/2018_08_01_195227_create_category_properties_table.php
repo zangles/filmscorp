@@ -18,6 +18,14 @@ class CreateCategoryPropertiesTable extends Migration
             $table->unsignedInteger('category_id');
             $table->string('name');
             $table->timestamps();
+
+
+        });
+
+        Schema::table('category_properties', function (Blueprint $table) {
+            $table->foreign('category_id')
+                ->references('id')->on('categories')
+                ->onDelete('cascade');
         });
     }
 

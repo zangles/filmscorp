@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/category/{category}/property', 'CategoryController@apiList')->name('category.property');
+Route::get('/product/{product}/property', 'ProductController@apiCategoryProperty')->name('product.property');
