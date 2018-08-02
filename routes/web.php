@@ -26,5 +26,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::resource('products', 'ProductController');
     Route::resource('categories', 'CategoryController');
+    Route::resource('sales', 'SalesController');
+    Route::get('/search', function () {
+        $categories = \App\Category::all();
+        return view('search.index', compact('categories'));
+    })->name('search');
 });
 

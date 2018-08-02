@@ -100,9 +100,9 @@
         });
 
         function loadProductProperty(id){
+            let $spiner = $(".sk-spinner");
+            $spiner.show();
             $.getJSON('/api/product/'+id+'/property', { }, function(data) {
-                let $spiner = $(".sk-spinner");
-                $spiner.show();
                 $.each(data, function(index, element) {
                     $('.propertyDiv').html('');
                     $spiner.hide();

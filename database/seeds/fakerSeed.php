@@ -17,16 +17,17 @@ class fakerSeed extends Seeder
         $productsCant = 50;
         $propertyCant = 10;
 
+        $category = factory(Category::class, 30)->create();
+
         for ( $j = 0; $j < $productsCant; $j++) {
-            $category = factory(Category::class)->create();
 
             $product = factory(Product::class)->create([
-                'category_id' => $category->id
+                'category_id' => Category::inRandomOrder()->first()->id
             ]);
 
             for ( $i = 0; $i < $propertyCant; $i++) {
                 $property = factory(CategoryProperty::class)->create([
-                    'category_id' => $category->id
+                    'category_id' => $product->category->id
                 ]);
 
                 $product->property()->attach($property->id, [
@@ -34,6 +35,17 @@ class fakerSeed extends Seeder
                 ]);
             }
 
+            for ( $k = 0; $k < rand(1,5); $k++) {
+                $quantity = rand(1,10);
+                $sale = factory(\App\Sales::class)->create([
+                    'product_id' => $product->id,
+                    'quantity' => $quantity,
+                    'amount' => $product->price * $quantity
+                ]);
+            }
         }
+
+
+
     }
 }

@@ -30,6 +30,12 @@
             <li>
                 <a href="{{ route('categories.index') }}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Categorias</span></a>
             </li>
+            <li>
+                <a href="{{ route('sales.index') }}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Ventas</span></a>
+            </li>
+            <li>
+                <a href="{{ route('search') }}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Busqueda</span></a>
+            </li>
         </ul>
     </div>
 </nav>

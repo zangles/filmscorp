@@ -19,4 +19,9 @@ class Product extends Model
     {
         return $this->belongsToMany('App\CategoryProperty', 'product_category_property')->withPivot('value');
     }
+
+    public function sales()
+    {
+        return $this->hasMany('App\Sales');
+    }
 }

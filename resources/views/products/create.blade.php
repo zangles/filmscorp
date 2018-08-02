@@ -90,9 +90,9 @@
             $("#category").change(function(){
                 var categoryId = $(this).val();
                 if (categoryId !== 0) {
+                    let $spiner = $(".sk-spinner");
+                    $spiner.show();
                     $.getJSON('/api/category/'+$(this).val()+'/property', { }, function(data) {
-                        let $spiner = $(".sk-spinner");
-                        $spiner.show();
                         $.each(data, function(index, element) {
                             $('.propertyDiv').html('');
                             $spiner.hide();
