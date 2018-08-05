@@ -27,9 +27,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('products', 'ProductController');
     Route::resource('categories', 'CategoryController');
     Route::resource('sales', 'SalesController');
-    Route::get('/search', function () {
-        $categories = \App\Category::all();
-        return view('search.index', compact('categories'));
-    })->name('search');
+    Route::get('/search', 'SearchController@index')->name('search');
+    Route::post('/search', 'SearchController@result')->name('search.result');
 });
 

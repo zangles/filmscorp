@@ -1,6 +1,7 @@
 ##Cosas pendientes
 
 - Repopular categoria y caracteristicas al fallar validacion en creacion y edicion de producto
+- Repopular Busqueda
 
 ##Modificaciones al requerimiento
 
